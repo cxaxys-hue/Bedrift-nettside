@@ -1,0 +1,13 @@
+# Dependencies
+node_modules
+
+# Build output (source HTML is index.html in root only)
+dist
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env
+.env
+.env.local
