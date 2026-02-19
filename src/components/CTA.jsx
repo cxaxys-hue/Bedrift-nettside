@@ -44,7 +44,13 @@ export default function CTA({ onOpenForm }) {
                   )}
                 </div>
               </div>
-              <div className="hidden lg:block" />
+              <div className="hidden lg:flex items-center justify-center">
+                <img
+                  src="/undraw-add-files.svg"
+                  alt=""
+                  className="w-full max-w-sm xl:max-w-md"
+                />
+              </div>
             </div>
         </div>
       </div>

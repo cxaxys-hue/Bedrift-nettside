@@ -1,8 +1,8 @@
 import { Mail, Moon, Sun } from 'lucide-react'
 
 const links = [
-  { label: 'Tjenester', href: '#tjenester' },
   { label: 'Om oss', href: '#om-oss' },
+  { label: 'Tjenester', href: '#tjenester' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Kontakt', href: '#kontakt' },
 ]
@@ -17,23 +17,23 @@ export default function Footer({ darkMode, onToggleDark }) {
       }}
     >
       <div className="max-w-4xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10 md:gap-8 pt-4">
-          <div className="text-center md:text-left">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-center gap-10 md:gap-12 pt-4 w-full">
+          <div className="text-center">
             <a href="#" className="font-medium text-lg tracking-tight block mb-2" style={{ color: '#fff' }}>
               WebStarkupisz
             </a>
-            <p className="text-sm max-w-xs mt-3" style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.6 }}>
+            <p className="text-sm max-w-xs mt-3 mx-auto" style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.6 }}>
               Norsk webbyrå. Nettsider som leverer.
             </p>
           </div>
 
           <div className="hidden md:block w-px flex-shrink-0 self-stretch min-h-[60px]" style={{ background: 'linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.15), transparent)' }} />
 
-          <nav className="flex flex-col items-center md:items-start">
+          <nav className="flex flex-col items-center">
             <span className="text-[10px] font-medium tracking-widest uppercase mb-3" style={{ color: 'rgba(255,255,255,0.6)' }}>
               Navigasjon
             </span>
-            <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-1">
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-1">
               {links.map(link => (
                 <a
                   key={link.label}
@@ -49,7 +49,7 @@ export default function Footer({ darkMode, onToggleDark }) {
 
           <div className="hidden md:block w-px flex-shrink-0 self-stretch min-h-[60px]" style={{ background: 'linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.15), transparent)' }} />
 
-          <div className="flex flex-col items-center md:items-end text-center md:text-right">
+          <div className="flex flex-col items-center text-center">
             <span className="text-[10px] font-medium tracking-widest uppercase mb-3" style={{ color: 'rgba(255,255,255,0.6)' }}>
               Kontakt
             </span>

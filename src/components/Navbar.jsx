@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
 const links = [
-  { label: 'Tjenester', href: '#tjenester' },
   { label: 'Om oss', href: '#om-oss' },
+  { label: 'Tjenester', href: '#tjenester' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Kontakt', href: '#kontakt' },
 ]
@@ -37,7 +37,7 @@ export default function Navbar() {
           className="font-medium text-base tracking-tight transition-colors hover:text-[var(--primary)]"
           style={{ color: 'var(--text)' }}
         >
-          WebStarkupisz
+          WebStar Kupisz
         </a>
 
         <div className="hidden md:flex items-center gap-7">

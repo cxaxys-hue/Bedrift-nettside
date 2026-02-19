@@ -41,7 +41,7 @@
   --secondary: #8b6b9e;
   --tertiary: #a080b0;
   --light: #faf4ee;
-  --gradient-bg: linear-gradient(165deg, #fdf8f2 0%, #f5ebe0 40%, #f0e2d4 70%, #e8d4c4 100%);
+  --gradient-bg: linear-gradient(135deg, #fdf8f2 0%, #f8efe6 20%, #f2e6dc 40%, #ebe0d6 60%, #e8d9cc 80%, #e5d4c4 100%);
   --footer-bg: linear-gradient(180deg, #7a6a5c 0%, #5a4d44 100%);
   --footer-border: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -54,11 +54,31 @@ html.dark {
   --secondary: #58a6ff;
   --tertiary: #a371f7;
   --light: #21262d;
-  --gradient-bg: linear-gradient(180deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+  --gradient-bg: linear-gradient(135deg, #0d1117 0%, #111820 25%, #161b22 50%, #0f1319 75%, #0d1117 100%);
 }
 
 .gradient-bg-inner {
   background: var(--gradient-bg);
+}
+.gradient-bg-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 70% at 10% 10%, rgba(232, 122, 64, 0.22) 0%, rgba(232, 122, 64, 0.08) 35%, transparent 65%);
+  pointer-events: none;
+}
+.gradient-bg-inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 55% at 90% 75%, rgba(139, 107, 158, 0.2) 0%, rgba(139, 107, 158, 0.08) 40%, transparent 65%);
+  pointer-events: none;
+}
+html.dark .gradient-bg-inner::before {
+  background: radial-gradient(ellipse 90% 70% at 10% 10%, rgba(88, 166, 255, 0.1) 0%, rgba(163, 113, 247, 0.06) 40%, transparent 70%);
+}
+html.dark .gradient-bg-inner::after {
+  background: radial-gradient(ellipse 70% 55% at 90% 75%, rgba(163, 113, 247, 0.14) 0%, rgba(88, 166, 255, 0.08) 40%, transparent 65%);
 }
 
 .navbar-glass {
@@ -79,6 +99,7 @@ html.dark {
 
 .content-glass {
   background: rgba(253, 248, 242, 0.75);
+  transform: translateZ(0);
   backdrop-filter: blur(24px) saturate(150%);
   -webkit-backdrop-filter: blur(24px) saturate(150%);
   border: 1px solid rgba(139, 107, 158, 0.18);
@@ -143,6 +164,7 @@ html.dark {
 }
 
 .cta-glass {
+  transform: translateZ(0);
   backdrop-filter: blur(28px) saturate(150%);
   -webkit-backdrop-filter: blur(28px) saturate(150%);
   background: rgba(253, 248, 242, 0.82) !important;
@@ -231,6 +253,7 @@ html.dark {
 }
 
 .pro-card {
+  transform: translateZ(0);
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 12px;

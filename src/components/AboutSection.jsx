@@ -54,34 +54,45 @@ export default function AboutSection() {
             Alt du trenger under ett tak.
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 mb-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1">
             {services.map((item, i) => {
               const Icon = item.icon
               const accentColor = i % 2 === 0 ? 'var(--primary)' : 'var(--secondary)'
               return (
                 <div
                   key={item.title}
-                  className="content-glass glare-box rounded-2xl p-6 md:p-8 flex flex-col relative transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5"
+                  className="content-glass glare-box rounded-2xl p-6 md:p-8 flex flex-col relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5"
                 >
                   <div className="glare-overlay" />
-                  <div
-                    className="content-glass-icon w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                  <div className="relative z-10">
+                    <div
+                      className="content-glass-icon w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                     style={{ color: accentColor }}
                   >
                     <Icon size={22} strokeWidth={1.5} />
                   </div>
-                  <h4
-                    className="text-xs font-semibold tracking-widest uppercase mb-3"
-                    style={{ color: 'var(--text)', lineHeight: 1.3 }}
-                  >
-                    {item.title}
-                  </h4>
-                  <p className="text-sm flex-1" style={{ color: 'var(--muted)', lineHeight: 1.65 }}>
-                    {item.desc}
-                  </p>
+                    <h4
+                      className="text-xs font-semibold tracking-widest uppercase mb-3"
+                      style={{ color: 'var(--text)', lineHeight: 1.3 }}
+                    >
+                      {item.title}
+                    </h4>
+                    <p className="text-sm flex-1" style={{ color: 'var(--muted)', lineHeight: 1.65 }}>
+                      {item.desc}
+                    </p>
+                  </div>
                 </div>
               )
             })}
+          </div>
+          <div className="hidden lg:flex items-end justify-center flex-shrink-0 w-48 xl:w-56">
+            <img
+              src="/undraw-programming.svg"
+              alt=""
+              className="w-full max-h-64 object-contain object-bottom"
+            />
+          </div>
           </div>
 
           <div

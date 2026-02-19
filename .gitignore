@@ -11,3 +11,6 @@ npm-debug.log*
 # Env
 .env
 .env.local
+
+# Editor
+.cursor

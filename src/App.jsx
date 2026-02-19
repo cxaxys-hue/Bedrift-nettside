@@ -53,7 +53,6 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    // #kontakt opens contact modal
     const handleClick = e => {
       const anchor = e.target.closest('a[href="#kontakt"]')
       if (anchor) {
