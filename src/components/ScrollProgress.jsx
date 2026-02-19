@@ -4,16 +4,14 @@ export default function ScrollProgress() {
   const [height, setHeight] = useState(0)
 
   useEffect(() => {
-    let ticking = false
+    let last = -1
     const update = () => {
-      if (!ticking) {
-        ticking = true
-        requestAnimationFrame(() => {
-          const scrolled = window.scrollY
-          const max = document.documentElement.scrollHeight - window.innerHeight
-          setHeight(max > 0 ? (scrolled / max) * 100 : 0)
-          ticking = false
-        })
+      const scrolled = window.scrollY
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      const v = max > 0 ? Math.round((scrolled / max) * 100) : 0
+      if (v !== last) {
+        last = v
+        setHeight(v)
       }
     }
     window.addEventListener('scroll', update, { passive: true })
@@ -31,11 +29,11 @@ export default function ScrollProgress() {
         style={{ background: 'rgba(0,0,0,0.06)', width: 4 }}
       >
         <div
-          className="absolute top-0 left-0 right-0 transition-none rounded-full"
+          className="absolute top-0 left-0 right-0 rounded-full"
           style={{
             height: `${height}%`,
             minHeight: height > 0 ? 8 : 0,
-            background: '#5465ff',
+            background: 'var(--primary)',
             width: 4,
           }}
         />

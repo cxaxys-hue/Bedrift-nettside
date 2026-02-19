@@ -1,4 +1,4 @@
-import { useState, memo } from 'react'
+import { useState, memo, useCallback } from 'react'
 import { ChevronDown } from 'lucide-react'
 
 const faqs = [
@@ -28,31 +28,32 @@ const faqs = [
   },
 ]
 
-const FAQItem = memo(function FAQItem({ q, a, isOpen, onToggle }) {
+const FAQItem = memo(function FAQItem({ q, a, isOpen, index }) {
   return (
     <div
-      className="border-b transition-colors"
-      style={{ borderColor: 'rgba(120, 139, 255, 0.15)' }}
+      className="border-b transition-colors faq-item"
+      style={{ borderColor: 'rgba(0, 0, 0, 0.08)' }}
     >
       <button
-        onClick={onToggle}
+        type="button"
+        data-faq-index={index}
         className="w-full flex items-center justify-between py-5 text-left group"
       >
         <span
-          className="font-medium text-base pr-8 transition-colors group-hover:text-[#5465ff]"
-          style={{ color: isOpen ? '#5465ff' : '#333' }}
+          className="font-medium text-base pr-8 transition-colors group-hover:text-[var(--primary)]"
+          style={{ color: isOpen ? 'var(--primary)' : 'var(--text)' }}
         >
           {q}
         </span>
         <ChevronDown
           size={20}
           className={`faq-chevron flex-shrink-0 transition-colors ${isOpen ? 'open' : ''}`}
-          style={{ color: isOpen ? '#5465ff' : '#999' }}
+          style={{ color: isOpen ? 'var(--primary)' : 'var(--muted)' }}
         />
       </button>
       <div className={`faq-answer ${isOpen ? 'open' : ''}`}>
         <div>
-          <p className="pb-5 text-sm" style={{ color: '#555', lineHeight: 1.7 }}>
+          <p className="pb-5 text-sm" style={{ color: 'var(--muted)', lineHeight: 1.7 }}>
             {a}
           </p>
         </div>
@@ -63,34 +64,41 @@ const FAQItem = memo(function FAQItem({ q, a, isOpen, onToggle }) {
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0)
+  const handleToggle = useCallback((e) => {
+    const btn = e.target.closest('button[data-faq-index]')
+    if (btn) {
+      const i = +btn.dataset.faqIndex
+      setOpenIndex(prev => prev === i ? -1 : i)
+    }
+  }, [])
 
   return (
-    <section id="faq" className="py-12 md:py-16 px-6">
+    <section id="faq" className="py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-3xl mx-auto">
         <div className="mb-8 text-center md:text-left">
-          <span className="text-xs font-medium tracking-widest uppercase mb-4 block" style={{ color: '#788bff' }}>
+          <span className="text-xs font-medium tracking-widest uppercase mb-4 block" style={{ color: 'var(--primary)' }}>
             Spørsmål & Svar
           </span>
           <h2
             className="font-medium tracking-tight mb-4"
-            style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#333', lineHeight: 1.1 }}
+            style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--text)', lineHeight: 1.1 }}
           >
             Ofte stilte spørsmål
           </h2>
-          <p className="text-base max-w-xl mx-auto" style={{ color: '#555', lineHeight: 1.6 }}>
+          <p className="text-base max-w-xl mx-auto md:mx-0" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>
             Finn raske svar på de vanligste spørsmålene.
           </p>
         </div>
 
         <div>
-          <div className="pro-card rounded-2xl overflow-hidden" style={{ padding: '0 1.5rem' }}>
+          <div className="pro-card rounded-2xl overflow-hidden" style={{ padding: '0 1.5rem' }} onClick={handleToggle}>
             {faqs.map((item, i) => (
               <FAQItem
                 key={i}
                 q={item.q}
                 a={item.a}
+                index={i}
                 isOpen={openIndex === i}
-                onToggle={() => setOpenIndex(openIndex === i ? -1 : i)}
               />
             ))}
           </div>
